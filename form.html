@@ -1,0 +1,94 @@
+<style>
+textarea{
+height: 10em;
+}
+#body{
+padding: 0.5em 1em;
+}
+#output{
+display:none;
+}
+#sendbutton{
+display: block;
+width: 30em;
+height: 3em;
+border-radius: 4px;
+margin-top: 1.5em;
+background-color: #FFF;
+letter-spacing: 0.1em;
+color: #FFF;
+border: 1px solid transparent;
+line-height: 3em;
+text-align:center;
+background: #4285f4;
+background: -webkit-linear-gradient(top,#4387fd,#4683ea);
+background: linear-gradient(top,#4387fd,#4683ea);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4387fd,endColorstr=#4683ea,GradientType=1);
+}
+#sendbutton:hover{
+opacity: 0.6;
+cursor: pointer;
+}
+.inputwidth{
+width: 30em;
+font-size: 1em;
+line-height: 1.4em;
+}
+</style>
+<script>
+  function updateOutput(resultHtml) {
+//    toggle_visibility('output');
+    //Return from processForm(this.parentNode) set to resultHtml.
+    var outputDiv = document.getElementById('output');
+    outputDiv.innerHTML = resultHtml;
+  }
+
+  function toggle_visibility(id) {
+    var o = document.getElementById(id);
+    if(o.style.display == 'block'){
+      o.style.display = 'none';
+    }else{
+      o.style.display = 'block';
+    }
+  }
+  function init_output(){
+    var o = document.getElementById('output');
+    o.style.display = 'block';
+    o.innerHTML = '送信中…';
+  }
+
+</script>
+
+<div id="body">
+
+<h1>お問い合わせ</h1>
+ 
+<div id="formDiv">
+<!-- Form div will be hidden after form submission -->
+<form id="myForm">
+
+お名前（必須ではありません）<br>
+<input type="text" class="inputwidth" name="myName" placeholder="氏名が入力できます（必須ではありません）"><br>
+<br>
+メールアドレス（必須ではありません）<br>
+<input type="text" class="inputwidth" name="myMail" placeholder="メールアドレスが入力できます（必須ではありません）"><br>
+<br>
+内容を入力してください<br>
+<textarea id="myText" name="myText" class="inputwidth" placeholder="内容を入力してください。" required></textarea>
+<br> 
+画像を送信できます <br>
+<input name="myFile" type="file" /><br>
+<a href="javascript:;" 
+value="送信する" 
+id="sendbutton" 
+onclick="init_output();
+google.script.run.withSuccessHandler(updateOutput).processForm(this.parentNode)"
+>送信する</a>
+</form>
+</div>
+
+ 
+<div id="output">
+</div>
+
+</div>

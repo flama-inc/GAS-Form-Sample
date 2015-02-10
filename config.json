@@ -1,0 +1,40 @@
+{
+  "folder_id": ""
+  ,"sheet_id": ""
+  ,"log_sheet_id": ""
+  ,"pagetitle": "タイトル"
+  ,"startline": 1
+  ,"template_init": "form.html"
+  ,"template_complete": "complete.html"
+  ,"template_error": "error.html"
+  ,"form_file_name": "myFile"
+  ,"inputs": [{
+    "name": "myName"
+    ,"label": "名前"
+    ,"required": false
+    ,"ismail": false
+  },{
+    "name": "myMail"
+    ,"label": "メールアドレス"
+    ,"required": false
+    ,"ismail": true
+  },{
+    "name": "myText"
+    ,"label": "内容"
+    ,"required": true
+    ,"ismail": false
+  }]
+  ,"with_mail": true
+  ,"mail_configs": [{
+    "subject": "お問い合わせ確認メール"
+    ,"sender_address": "example@example.com"
+    ,"sender_name": "管理者"
+    ,"mail_body_file_id": ""
+    ,"send_to_address": ""
+    ,"replaces": [{
+     "from": "{message}"
+     ,"to": "myText"
+    }]
+  }]
+}
+
